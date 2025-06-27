@@ -24,5 +24,7 @@ router.delete('/sequences/:id', auth, (req, res) => emailController.deleteSequen
 router.post('/signup', (req, res) => userController.signup(req, res));
 router.post('/login', (req, res) => userController.login(req, res));
 router.get('/me', auth, (req, res) => userController.me(req, res));
+router.get('/profile', auth, (req, res) => userController.getProfile(req, res));
+router.put('/profile', auth, (req, res) => userController.updateProfile(req, res));
 
 module.exports = router; 
