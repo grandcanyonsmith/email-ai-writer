@@ -1,6 +1,8 @@
 const openaiService = require('../services/openaiService');
 const fs = require('fs').promises;
 const path = require('path');
+const archiver = require('archiver');
+const unzipper = require('unzipper');
 
 class EmailController {
   async generateSequence(req, res) {
@@ -299,6 +301,42 @@ class EmailController {
         error: 'Failed to edit email',
         message: error.message 
       });
+    }
+  }
+
+  async backupSequences(req, res) {
+    try {
+      const sequencesDir = path.join(__dirname, '../../generated_sequences');
+      res.setHeader('Content-Type', 'application/zip');
+      res.setHeader('Content-Disposition', 'attachment; filename="sequences_backup.zip"');
+      const archive = archiver('zip', { zlib: { level: 9 } });
+      archive.directory(sequencesDir, false);
+      archive.finalize();
+      archive.pipe(res);
+    } catch (error) {
+      console.error('Error creating backup:', error);
+      res.status(500).json({ error: 'Failed to create backup', message: error.message });
+    }
+  }
+
+  async restoreSequences(req, res) {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+      }
+      const sequencesDir = path.join(__dirname, '../../generated_sequences');
+      await fs.mkdir(sequencesDir, { recursive: true });
+      const stream = fs.createReadStream(req.file.path)
+        .pipe(unzipper.Extract({ path: sequencesDir }));
+      stream.on('close', () => {
+        res.json({ success: true, message: 'Sequences restored successfully' });
+      });
+      stream.on('error', (err) => {
+        throw err;
+      });
+    } catch (error) {
+      console.error('Error restoring backup:', error);
+      res.status(500).json({ error: 'Failed to restore backup', message: error.message });
     }
   }
 }
