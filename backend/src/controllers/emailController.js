@@ -3,10 +3,37 @@ const fs = require('fs').promises;
 const path = require('path');
 const archiver = require('archiver');
 const unzipper = require('unzipper');
+const Joi = require('joi');
+
+const businessDataSchema = Joi.object({
+  businessName: Joi.string().min(2).max(100).required(),
+  businessDescription: Joi.string().min(5).max(1000).required(),
+  targetAudience: Joi.string().min(2).max(100).required(),
+  leadMagnet: Joi.string().min(2).max(200).required(),
+  primaryCTA: Joi.string().min(2).max(100).required(),
+  secondaryCTA: Joi.string().allow('').max(100),
+  heroJourney: Joi.string().allow('').max(2000),
+  resources: Joi.array().items(Joi.string()),
+  engageCount: Joi.number().integer().min(1).max(6),
+  guideCount: Joi.number().integer().min(1).max(4),
+  offerCount: Joi.number().integer().min(1).max(3)
+});
+
+const editEmailSchema = Joi.object({
+  emailType: Joi.string().required(),
+  currentContent: Joi.string().required(),
+  currentSubject: Joi.string().allow(''),
+  businessData: businessDataSchema.required(),
+  aiPrompt: Joi.string().min(2).required()
+});
 
 class EmailController {
   async generateSequence(req, res) {
     try {
+      const { error } = businessDataSchema.validate(req.body);
+      if (error) {
+        return res.status(400).json({ error: 'Validation error', details: error.details });
+      }
       const businessData = req.body;
       
       // Validate required fields
@@ -271,6 +298,10 @@ class EmailController {
 
   async editEmail(req, res) {
     try {
+      const { error } = editEmailSchema.validate(req.body);
+      if (error) {
+        return res.status(400).json({ error: 'Validation error', details: error.details });
+      }
       const { emailType, currentContent, currentSubject, businessData, aiPrompt } = req.body;
       
       // Validate required fields
