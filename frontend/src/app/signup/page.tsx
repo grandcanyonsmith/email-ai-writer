@@ -1,12 +1,15 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Toast from "../components/Toast";
+import Spinner from "../components/Spinner";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showToast, setShowToast] = useState(false);
   const router = useRouter();
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://email-ai-writer-production.up.railway.app";
@@ -28,6 +31,7 @@ export default function SignupPage() {
       router.push("/");
     } catch (err: any) {
       setError(err.message);
+      setShowToast(true);
     } finally {
       setLoading(false);
     }
@@ -48,6 +52,7 @@ export default function SignupPage() {
               onChange={e => setEmail(e.target.value)}
               required
               autoFocus
+              disabled={loading}
             />
           </div>
           <div>
@@ -59,21 +64,24 @@ export default function SignupPage() {
               onChange={e => setPassword(e.target.value)}
               required
               minLength={6}
+              disabled={loading}
             />
           </div>
-          {error && <div className="bg-red-50 text-red-600 rounded-md p-3 text-sm">{error}</div>}
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition disabled:opacity-60"
+            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition disabled:opacity-60 flex items-center justify-center"
             disabled={loading}
           >
-            {loading ? "Signing up..." : "Sign Up"}
+            {loading ? <Spinner /> : "Sign Up"}
           </button>
         </form>
         <div className="mt-6 text-center text-gray-500 text-sm">
           Already have an account? <a href="/login" className="text-blue-600 hover:underline font-medium">Sign in</a>
         </div>
       </div>
+      {showToast && error && (
+        <Toast message={error} type="error" onClose={() => setShowToast(false)} />
+      )}
     </div>
   );
 } 
