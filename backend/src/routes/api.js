@@ -27,4 +27,8 @@ router.get('/me', auth, (req, res) => userController.me(req, res));
 router.get('/profile', auth, (req, res) => userController.getProfile(req, res));
 router.put('/profile', auth, (req, res) => userController.updateProfile(req, res));
 
+// Template management endpoints
+router.get('/templates', auth, (req, res) => emailController.getTemplates(req, res));
+router.put('/templates', auth, (req, res) => emailController.updateTemplate(req, res));
+
 module.exports = router; 

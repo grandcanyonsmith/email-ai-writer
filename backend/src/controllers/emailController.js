@@ -324,6 +324,30 @@ class EmailController {
       res.status(500).json({ error: 'Failed to edit email', message: error.message });
     }
   }
+
+  async getTemplates(req, res) {
+    try {
+      const templates = await prisma.template.findMany();
+      res.json({ templates });
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to fetch templates', message: err.message });
+    }
+  }
+
+  async updateTemplate(req, res) {
+    try {
+      const { name, content } = req.body;
+      if (!name || !content) return res.status(400).json({ error: 'Name and content required' });
+      const template = await prisma.template.upsert({
+        where: { name },
+        update: { content },
+        create: { name, content },
+      });
+      res.json({ template });
+    } catch (err) {
+      res.status(500).json({ error: 'Failed to update template', message: err.message });
+    }
+  }
 }
 
 module.exports = new EmailController(); 
