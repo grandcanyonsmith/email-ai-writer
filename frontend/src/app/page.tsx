@@ -72,8 +72,8 @@ export default function Home() {
   ];
   const currentStep = useMemo(() => {
     for (let i = 0; i < steps.length; i++) {
-      const key = steps[i].key;
-      if (!formData[key] || (Array.isArray(formData[key]) && formData[key].length === 0)) {
+      const key = steps[i].key as keyof FormData;
+      if (!formData[key] || (Array.isArray(formData[key]) && (formData[key] as any[]).length === 0)) {
         return i;
       }
     }
