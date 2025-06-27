@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -7,6 +7,7 @@ import EmailViewer from './components/EmailViewer';
 import AuthModal from './components/AuthModal';
 import UserMenu from './components/UserMenu';
 import SequenceList from './components/SequenceList';
+import { useRouter } from "next/navigation";
 
 interface EmailSequence {
   id: string;
@@ -41,12 +42,13 @@ interface FormData {
   offerCount: number;
 }
 
-export default function Home() {
+export default function HomePage() {
   const [user, setUser] = useState<any>(null);
   const [token, setToken] = useState<string | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showSequences, setShowSequences] = useState(false);
   const [selectedSequence, setSelectedSequence] = useState<any>(null);
+  const router = useRouter();
 
   const [formData, setFormData] = useState<FormData>({
     businessName: '',
@@ -68,16 +70,16 @@ export default function Home() {
   const [selectedEmail, setSelectedEmail] = useState<any>(null);
   const [showEmailViewer, setShowEmailViewer] = useState(false);
 
-  // Check for existing auth on mount
   useEffect(() => {
-    const savedToken = localStorage.getItem('authToken');
-    const savedUser = localStorage.getItem('user');
-    
-    if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
+    const t = localStorage.getItem("token");
+    const u = localStorage.getItem("user");
+    if (!t) {
+      router.replace("/login");
+    } else {
+      setToken(t);
+      setUser(u ? JSON.parse(u) : null);
     }
-  }, []);
+  }, [router]);
 
   const handleAuthSuccess = (authToken: string, userData: any) => {
     setToken(authToken);
@@ -94,6 +96,7 @@ export default function Home() {
     setSelectedSequence(null);
     localStorage.removeItem('authToken');
     localStorage.removeItem('user');
+    router.replace("/login");
   };
 
   // Progress bar logic
@@ -217,70 +220,53 @@ export default function Home() {
     setResult(sequence);
   };
 
+  if (!token) {
+    return null; // or a loading spinner
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        {/* Header with Auth */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-          <div className="flex justify-between items-center mb-8">
-            <div></div>
-            <h1 className="text-4xl font-bold text-gray-900">
-              Email AI Writer
-            </h1>
-            <div>
-              {user ? (
-                <UserMenu user={user} onLogout={handleLogout} />
-              ) : (
-                <button
-                  onClick={() => setShowAuthModal(true)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Sign In
-                </button>
-              )}
-            </div>
+    <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-blue-100">
+      <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-8 border border-gray-100 mt-12 mb-12">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Email AI Writer</h1>
+          <UserMenu user={user} onLogout={handleLogout} />
+        </div>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Generate personalized email sequences using AI and the proven LEGO framework
+        </p>
+        
+        {user && (
+          <div className="mt-4 flex justify-center space-x-4">
+            <button
+              onClick={() => setShowSequences(!showSequences)}
+              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+            >
+              {showSequences ? 'Hide' : 'View'} My Sequences
+            </button>
+            <button
+              onClick={() => {
+                setResult(null);
+                setSelectedSequence(null);
+                setFormData({
+                  businessName: '',
+                  businessDescription: '',
+                  targetAudience: '',
+                  leadMagnet: '',
+                  primaryCTA: 'book_call',
+                  secondaryCTA: '',
+                  heroJourney: '',
+                  resources: [],
+                  engageCount: 3,
+                  guideCount: 2,
+                  offerCount: 1
+                });
+              }}
+              className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            >
+              New Sequence
+            </button>
           </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Generate personalized email sequences using AI and the proven LEGO framework
-          </p>
-          
-          {user && (
-            <div className="mt-4 flex justify-center space-x-4">
-              <button
-                onClick={() => setShowSequences(!showSequences)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-              >
-                {showSequences ? 'Hide' : 'View'} My Sequences
-              </button>
-              <button
-                onClick={() => {
-                  setResult(null);
-                  setSelectedSequence(null);
-                  setFormData({
-                    businessName: '',
-                    businessDescription: '',
-                    targetAudience: '',
-                    leadMagnet: '',
-                    primaryCTA: 'book_call',
-                    secondaryCTA: '',
-                    heroJourney: '',
-                    resources: [],
-                    engageCount: 3,
-                    guideCount: 2,
-                    offerCount: 1
-                  });
-                }}
-                className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
-              >
-                New Sequence
-              </button>
-            </div>
-          )}
-        </motion.div>
+        )}
 
         {/* Sequences List */}
         {user && showSequences && (
@@ -289,7 +275,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white shadow-xl rounded-2xl p-8 mb-8"
           >
-            <SequenceList token={token!} onSelectSequence={handleSelectSequence} />
+            <SequenceList token={token} onSelectSequence={handleSelectSequence} />
           </motion.div>
         )}
 
