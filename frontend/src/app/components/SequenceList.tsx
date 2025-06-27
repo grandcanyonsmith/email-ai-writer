@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Spinner from "./Spinner";
 
 interface Sequence {
   id: number;
