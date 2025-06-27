@@ -210,27 +210,28 @@ export default function EmailViewer({ email, businessData, onClose, onSave }: Em
                   
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">Content:</h3>
-                    <div className="bg-white rounded-lg p-6 border border-gray-200 prose prose-sm max-w-none">
-                      <ReactMarkdown 
-                        remarkPlugins={[remarkGfm]}
-                        className="prose prose-sm max-w-none"
-                        components={{
-                          h1: ({children}) => <h1 className="text-xl font-bold mb-3">{children}</h1>,
-                          h2: ({children}) => <h2 className="text-lg font-bold mb-2">{children}</h2>,
-                          h3: ({children}) => <h3 className="text-base font-bold mb-2">{children}</h3>,
-                          p: ({children}) => <p className="mb-3 leading-relaxed">{children}</p>,
-                          strong: ({children}) => <strong className="font-semibold">{children}</strong>,
-                          em: ({children}) => <em className="italic">{children}</em>,
-                          ul: ({children}) => <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>,
-                          ol: ({children}) => <ol className="list-decimal list-inside mb-3 space-y-1">{children}</ol>,
-                          li: ({children}) => <li className="text-gray-700">{children}</li>,
-                          blockquote: ({children}) => <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-600 mb-3">{children}</blockquote>,
-                          code: ({children}) => <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono">{children}</code>,
-                          pre: ({children}) => <pre className="bg-gray-100 p-3 rounded-lg overflow-x-auto mb-3">{children}</pre>,
-                        }}
-                      >
-                        {formatEmailContent(email.content)}
-                      </ReactMarkdown>
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <div className="prose prose-sm max-w-none">
+                        <ReactMarkdown 
+                          remarkPlugins={[remarkGfm]}
+                          components={{
+                            h1: ({children}) => <h1 className="text-xl font-bold mb-3">{children}</h1>,
+                            h2: ({children}) => <h2 className="text-lg font-bold mb-2">{children}</h2>,
+                            h3: ({children}) => <h3 className="text-base font-bold mb-2">{children}</h3>,
+                            p: ({children}) => <p className="mb-3 leading-relaxed">{children}</p>,
+                            strong: ({children}) => <strong className="font-semibold">{children}</strong>,
+                            em: ({children}) => <em className="italic">{children}</em>,
+                            ul: ({children}) => <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>,
+                            ol: ({children}) => <ol className="list-decimal list-inside mb-3 space-y-1">{children}</ol>,
+                            li: ({children}) => <li className="text-gray-700">{children}</li>,
+                            blockquote: ({children}) => <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-600 mb-3">{children}</blockquote>,
+                            code: ({children}) => <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono">{children}</code>,
+                            pre: ({children}) => <pre className="bg-gray-100 p-3 rounded-lg overflow-x-auto mb-3">{children}</pre>,
+                          }}
+                        >
+                          {formatEmailContent(email.content)}
+                        </ReactMarkdown>
+                      </div>
                     </div>
                   </div>
                 </div>
