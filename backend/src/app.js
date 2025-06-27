@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
+const morgan = require('morgan');
 require('dotenv').config();
 
 const apiRoutes = require('./routes/api');
@@ -19,6 +21,9 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 });
 app.use(limiter);
+
+app.use(morgan('combined'));
+app.use(mongoSanitize());
 
 // API routes
 app.use('/api', apiRoutes);

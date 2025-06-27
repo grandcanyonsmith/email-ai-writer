@@ -16,4 +16,13 @@ router.get('/sequences/backup', (req, res) => emailController.backupSequences(re
 // Restore sequences from zip
 router.post('/sequences/restore', upload.single('backup'), (req, res) => emailController.restoreSequences(req, res));
 
+// List all sequences
+router.get('/sequences', (req, res) => emailController.getSequences(req, res));
+// Get a single sequence
+router.get('/sequences/:id', (req, res) => emailController.getSequence(req, res));
+// Update a sequence
+router.put('/sequences/:id', (req, res) => emailController.updateSequence(req, res));
+// Delete a sequence
+router.delete('/sequences/:id', (req, res) => emailController.deleteSequence(req, res));
+
 module.exports = router; 
