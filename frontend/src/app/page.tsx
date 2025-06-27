@@ -1,9 +1,12 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import EmailViewer from './components/EmailViewer';
+import AuthModal from './components/AuthModal';
+import UserMenu from './components/UserMenu';
+import SequenceList from './components/SequenceList';
 
 interface EmailSequence {
   id: string;
@@ -39,6 +42,12 @@ interface FormData {
 }
 
 export default function Home() {
+  const [user, setUser] = useState<any>(null);
+  const [token, setToken] = useState<string | null>(null);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showSequences, setShowSequences] = useState(false);
+  const [selectedSequence, setSelectedSequence] = useState<any>(null);
+
   const [formData, setFormData] = useState<FormData>({
     businessName: '',
     businessDescription: '',
@@ -58,6 +67,34 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [selectedEmail, setSelectedEmail] = useState<any>(null);
   const [showEmailViewer, setShowEmailViewer] = useState(false);
+
+  // Check for existing auth on mount
+  useEffect(() => {
+    const savedToken = localStorage.getItem('authToken');
+    const savedUser = localStorage.getItem('user');
+    
+    if (savedToken && savedUser) {
+      setToken(savedToken);
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  const handleAuthSuccess = (authToken: string, userData: any) => {
+    setToken(authToken);
+    setUser(userData);
+    localStorage.setItem('authToken', authToken);
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
+
+  const handleLogout = () => {
+    setToken(null);
+    setUser(null);
+    setResult(null);
+    setShowSequences(false);
+    setSelectedSequence(null);
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+  };
 
   // Progress bar logic
   const steps = [
@@ -82,14 +119,23 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!token) {
+      setShowAuthModal(true);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://email-ai-writer-backend-production.up.railway.app';
+
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001"}/api/generate-sequence`, {
+      const response = await fetch(`${API_URL}/api/generate-sequence`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -97,10 +143,16 @@ export default function Home() {
       const data = await response.json();
       
       if (!response.ok) {
+        if (response.status === 401) {
+          handleLogout();
+          setShowAuthModal(true);
+          return;
+        }
         throw new Error(data.error || 'Failed to generate sequence');
       }
 
       setResult(data.sequence);
+      setShowSequences(false);
     } catch (error) {
       console.error('Error:', error);
       setError(error instanceof Error ? error.message : 'An error occurred');
@@ -145,21 +197,101 @@ export default function Home() {
     setSelectedEmail(null);
   };
 
+  const handleSelectSequence = (sequence: any) => {
+    setSelectedSequence(sequence);
+    setShowSequences(false);
+    // Load sequence data into form
+    setFormData({
+      businessName: sequence.businessName,
+      businessDescription: sequence.businessDescription,
+      targetAudience: sequence.targetAudience,
+      leadMagnet: sequence.leadMagnet,
+      primaryCTA: sequence.primaryCTA,
+      secondaryCTA: sequence.secondaryCTA || '',
+      heroJourney: sequence.heroJourney || '',
+      resources: sequence.resources ? sequence.resources.split(',') : [],
+      engageCount: sequence.distribution.engage,
+      guideCount: sequence.distribution.guide,
+      offerCount: sequence.distribution.offer
+    });
+    setResult(sequence);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        {/* Header with Auth */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Email AI Writer
-          </h1>
+          <div className="flex justify-between items-center mb-8">
+            <div></div>
+            <h1 className="text-4xl font-bold text-gray-900">
+              Email AI Writer
+            </h1>
+            <div>
+              {user ? (
+                <UserMenu user={user} onLogout={handleLogout} />
+              ) : (
+                <button
+                  onClick={() => setShowAuthModal(true)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Sign In
+                </button>
+              )}
+            </div>
+          </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Generate personalized email sequences using AI and the proven LEGO framework
           </p>
+          
+          {user && (
+            <div className="mt-4 flex justify-center space-x-4">
+              <button
+                onClick={() => setShowSequences(!showSequences)}
+                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              >
+                {showSequences ? 'Hide' : 'View'} My Sequences
+              </button>
+              <button
+                onClick={() => {
+                  setResult(null);
+                  setSelectedSequence(null);
+                  setFormData({
+                    businessName: '',
+                    businessDescription: '',
+                    targetAudience: '',
+                    leadMagnet: '',
+                    primaryCTA: 'book_call',
+                    secondaryCTA: '',
+                    heroJourney: '',
+                    resources: [],
+                    engageCount: 3,
+                    guideCount: 2,
+                    offerCount: 1
+                  });
+                }}
+                className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+              >
+                New Sequence
+              </button>
+            </div>
+          )}
         </motion.div>
+
+        {/* Sequences List */}
+        {user && showSequences && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white shadow-xl rounded-2xl p-8 mb-8"
+          >
+            <SequenceList token={token!} onSelectSequence={handleSelectSequence} />
+          </motion.div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form Section */}
@@ -472,6 +604,13 @@ export default function Home() {
           onSave={handleEmailUpdate}
         />
       )}
+
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onAuthSuccess={handleAuthSuccess}
+      />
     </div>
   );
 }
