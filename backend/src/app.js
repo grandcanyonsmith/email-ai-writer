@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const morgan = require('morgan');
+const fs = require('fs');
+const path = require('path');
 require('dotenv').config();
 
 const apiRoutes = require('./routes/api');
@@ -21,6 +23,14 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 });
 app.use(limiter);
+
+// Setup morgan to log errors to a file
+const logDirectory = path.join(__dirname, '../logs');
+if (!fs.existsSync(logDirectory)) {
+  fs.mkdirSync(logDirectory);
+}
+const errorLogStream = fs.createWriteStream(path.join(logDirectory, 'error.log'), { flags: 'a' });
+app.use(morgan('combined', { stream: errorLogStream, skip: (req, res) => res.statusCode < 400 }));
 
 app.use(morgan('combined'));
 app.use(mongoSanitize());
