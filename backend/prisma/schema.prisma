@@ -3,13 +3,11 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-  engineType = "library"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://postgres:WaThDbWjbCeMQIIkbNyxMZLBifkTXdfJ@maglev.proxy.rlwy.net:24201/railway"
 }
 
 model User {
@@ -37,4 +35,4 @@ model Sequence {
   distribution Json
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-}
+} 

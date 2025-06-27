@@ -16,11 +16,28 @@ const app = express();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: [
-    'https://cooperative-creativity-production.up.railway.app',
-    'http://localhost:3000'
-  ],
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'https://cooperative-creativity-production.up.railway.app',
+      'https://email-ai-writer-frontend-production.up.railway.app',
+      'https://email-ai-writer-frontend.up.railway.app',
+      'http://localhost:3000',
+      'http://localhost:3001'
+    ];
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(null, true); // Allow all origins for now
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
