@@ -1,0 +1,85 @@
+*Deliver the promise • Zero pitch • Set the stage*
+
+---
+
+### 1 | Purpose & Timing
+
+| What it does | When it fires |
+| --- | --- |
+| • Delivers exactly what the subscriber requested—instantly.• Explains who you are and why future emails are worth opening.• Tells them how often they’ll hear from you and how to bail if they ever want out. | Immediately after every fresh opt-in (and only then). |
+
+---
+
+### 2 | Required Ingredients
+
+| Ingredient | Why it matters | Quick example |
+| --- | --- | --- |
+| **Gratitude + quick congrats** | Personal touch; rewards momentum. | “Thanks for grabbing this, Jess—smart move.” |
+| **Instant-access link or button** | Fulfils the promise in one click—no extra form, no paywall, no login. | “[Download the Checklist]” |
+| **30-word usage crib-note** | Stops overwhelm and boosts activation. | “Skim the sheet, tick off any gaps, then watch the 5-min demo at step 3.” |
+| **Expectation set** | Reduces future unsubscribes and spam flags. | “I’ll email you twice a week with bite-size course-growth tactics—unsubscribe anytime with one click.” |
+| **Optional breadcrumb** | Keeps momentum without pitching. | “Tomorrow I’ll send the 3 launch-killers we see on new courses.” |
+
+---
+
+### 3 | Five Common *L* Variations (all **friction-free**)
+
+| Variation | When to use | Extra tweak |
+| --- | --- | --- |
+| **PDF / Cheat-Sheet** | Static download magnets. | Mention file size so mobile users aren’t surprised. |
+| **Direct-access Video** | You promised a training video. Link straight to an open page or unlisted YouTube/Vimeo URL—no gate. | Add a thumbnail image to lift clicks. |
+| **Template Pack / Zip** | Multiple docs or Canva templates. | List the contents so they know what’s inside. |
+| **Quiz / Assessment Results** | Opt-in via quiz funnel. | Summarise their score, tease what it means. |
+| **Webinar Confirm** | Live event sign-up. | Include calendar add-links + replay policy. |
+
+*(If your magnet is already delivered on the “thank-you” page, the Lead-In still repeats the link—people forget or lose the tab.)*
+
+---
+
+### 4 | Mini Templates
+
+### A. PDF / Checklist Delivery
+
+Subject: Your 19-point Course Launch Checklist ✅
+
+Hey {{first_name}},
+
+Here’s the PDF you asked for—one click and it’s yours:
+
+► Download the 2-page checklist
+
+How to use it (takes 10 min):
+1. Score your course idea against all 19 points.
+2. Highlight any “no” answers—they’re launch blockers.
+3. Reply and tell me which one stumped you; I read every note.
+
+Quick heads-up: I’ll pop into your inbox twice a week with bite-size tactics from selling $25 M in online courses. Unsub takes one click if that’s not your jam.
+
+Talk tomorrow,
+Stockton
+
+### B. Direct-Access Video Training
+
+---
+
+Subject: Your 7-minute “AI Website in a Weekend” video is ready
+
+Hey {{first_name}},
+
+Click below and the video opens—no login needed:
+
+▶ Watch the training
+
+Pro tip: play it at 1.25× speed and build alongside me—you’ll have a draft site live by lunch.
+
+Next email lands Friday: I’ll show you how a coaching client used this to sell 47 seats in 14 days.
+
+Enjoy!
+Stockton
+
+### 5 | Pitfalls to Dodge
+
+1. **Extra hoops** (passwords, re-captchas, upsells)
+2. **Sneaking in a sales pitch**—Lead-Ins are pure service
+3. **Wall of text instructions**—keep guidance in 2-3 short lines
+4. **No expectation statement**—readers should never wonder why you keep emailing

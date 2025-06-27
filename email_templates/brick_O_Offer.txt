@@ -1,0 +1,97 @@
+*Hard ask · Time-bound reason to act · Revenue trigger*
+
+---
+
+### 1 | Purpose & Timing
+
+| What it does | When it fires |
+| --- | --- |
+| • Converts banked trust into trials, sales, or upgrades.• Presents a clear, unequivocal purchase decision—price, benefit stack, urgency/scarcity.• Signals a “moment of action,” then smoothly returns readers to value emails. | **3 stand-alone O emails** inside every 30-touch evergreen cycle (≈ 10 %).Seasonal promos or launches can drop in as extra O emails—just keep the regular value cadence running so the overall ratio stays healthy. |
+
+---
+
+### 2 | Core Ingredients
+
+| Ingredient | Why it matters | Quick example |
+| --- | --- | --- |
+| **Urgency headline** | Marks this as an action email. | “48 hrs left: 30 % off CC360 🚀” |
+| **Benefit stack** | Leads with the outcome, not features. | “Launch faster · Replace $5k/mo stack · Unlimited students.” |
+| **Offer specifics** | Price, discount, bonuses, guarantee, deadline. | “$297/mo → $207/mo until Fri 11:59 PM PT.” |
+| **Proof snippet** | Removes doubt with social proof. | “4,211 creators switched in 2024.” |
+| **Single CTA button/link** | One path only—checkout or start trial. | “Start My 30-Day Free Trial” |
+| **FAQ / objection line (opt.)** | Pre-handles the #1 blocker. | “Still on Kajabi? Free migration in 24 hrs.” |
+
+---
+
+### 3 | Six Proven *O* Variations
+
+| Variation | Use-case | Extra tip |
+| --- | --- | --- |
+| **Launch-Day Blast** | New product/feature debut. | Include a mock-up image for tangibility. |
+| **Flash Sale Kick-off** | 24–72 hr discount window. | Embed a live countdown gif. |
+| **Early-Bird / Founders Rate** | Pre-sell or beta access. | Emphasise “price rises on…” for FOMO. |
+| **Upgrade Push** | Monthly → annual or higher tier. | Show savings math side-by-side. |
+| **Price-Increase Notice** | Lock in legacy pricing. | “Secure old rate by…” |
+| **Last-Chance Reminder** | Final call of any promo. | Short & punchy; resend to non-openers hours before close. |
+
+---
+
+### 4 | Plain-Text Mini Templates
+
+### A. Flash Sale Kick-off
+
+Subject: 72 hrs • 30 % off Course Creator 360 🎉
+
+Hey {{first_name}},
+
+To celebrate 75 k creators on CC360, we just opened a 72-hour flash sale:
+
+• Unlimited courses, funnels, automations
+• Done-for-you migration team
+• Priority Zoom support
+
+Regular $297/mo → **$207/mo** until Friday 11:59 PM PT.
+
+► Start My 30-Day Free Trial
+
+(Yes, the 30 free days stack on top of the discount—today only.)
+
+4,211 creators switched last year and cut software costs by 47 %. Ready to join them?
+
+See you inside,
+Stockton
+
+PS – Need CFO sign-off? Reply and I’ll send the savings math.
+
+### B. Last-Chance Reminder
+
+---
+
+Subject: Final call – discount ends in 6 hrs
+
+Clock’s almost up—our 30 % CC360 flash sale ends tonight at 11:59 PM PT.
+
+Miss it and the price jumps back to $297/mo.
+
+► Grab the $207 rate before the timer hits zero
+
+No contracts, 30-day free trial, free migration.
+
+– Stockton
+
+### 5 | Pitfalls to Dodge
+
+1. **Multiple CTAs** – one button, no forks.
+2. **Weak or missing deadline** – urgency is Offer oxygen.
+3. **Feature dump without outcome** – lead with transformation.
+4. **Over-frequency** – >3 stand-alone O emails per 30-touch cycle erodes goodwill.
+5. **Broken links/timers** – test on mobile and desktop before send.
+
+---
+
+### 6 | Relationship to Other Bricks
+
+- **Lead-in/Engage foundation:** Always place at least one Engage or hybrid Engage-Guide email before an Offer. Cold lists don’t convert.
+- **Post-purchase routing:** Tag buyers or trial-starters to skip subsequent O emails and enter onboarding while the rest of the list flows back to value-heavy Engage content.
+
+Master the **Offer** brick and you’ll monetise trust without draining it—keeping subscribers eager for the next insight instead of bracing for another pitch.

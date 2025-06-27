@@ -1,0 +1,85 @@
+*Pure value · No pitch · Trust multiplier*
+
+---
+
+### 1 | Purpose & Timing
+
+| What it does | When it fires |
+| --- | --- |
+| • Delivers teachable moments, inspiration, or quick wins that leave the reader better off. • Demonstrates authority without overt self-promotion. • Keeps the brand top-of-mind so future Guides and Offers feel welcome. | Forms the backbone of every sequence—about **18 of the 30 emails** in the evergreen cycle (≈ 60 %). |
+
+*(Length is flexible: write as much or as little as the idea needs—clarity beats word-count rules.)*
+
+---
+
+### 2 | Core Ingredients
+
+| Ingredient | Why it matters | Quick example |
+| --- | --- | --- |
+| **Hook + curiosity gap** | Stops the scroll and promises a payoff. | “The $11 typo that saved our launch.” |
+| **Value payload** | Tip, story, data, or tool that fulfils the hook—no selling. | Bullet framework, screenshot, or mini story. |
+| **Helpful link** | Points to deeper *free* help—video, template, doc, or checklist. | “Watch the Loom breakdown here.” |
+| **Conversation spark (optional)** | Invites a reply, poll, or micro-survey to keep engagement human. | “Hit reply with your biggest launch bottleneck.” |
+
+---
+
+### 3 | Seven Proven *E* Variations
+
+| Variation | Best-fit scenario | Extra tip |
+| --- | --- | --- |
+| **Quick-Win Tutorial** | Show a 3-step tactic they can use today. | Include a GIF or numbered bullets for skim-readers. |
+| **Relatable Founder Story** | Build personal connection; illustrate a lesson the hard way. | Close with the single takeaway—no pitch. |
+| **Mini Case Study** | Prove the tactic works for peers. | Lead with the before/after stat, then unpack the method. |
+| **Industry Trend Breakdown** | Position yourself as insider/analyst. | Tie the trend back to what it means for *them*. |
+| **Tool / Template Drop** | Give a spreadsheet, swipe file, or Canva kit. | One link + 2-line “how to use” note. |
+| **Fail Diary / Mistake Share** | Humanise the brand; teach through failure. | “Here’s what we’d do differently…” |
+| **Engagement Ask** | Re-ignite quiet segments or gather intel. | One clear question + reply request or survey link. |
+
+---
+
+### 4 | Plain-Text Mini Templates
+
+### A. Quick-Win Tutorial
+
+Subject: Cut refund requests in half with one email
+
+Ever notice most refund emails start the same way?
+
+“Hey, I never even used the course…”
+
+Here’s the 3-step sequence that slashed our refunds by 52 % last quarter:
+
+1. Day 2: “How is setup going?” (video walkthrough link)
+2. Day 7: Success story from a student who felt stuck at first.
+3. Day 20: Progress checkpoint—ask them to rate momentum 1-5.
+
+► Grab the exact copy here (Google Doc)
+
+Try it this week and tell me how it goes—hit reply, I read them all.
+– Stockton
+
+### B. Relatable Founder Story
+
+---
+
+Subject: I deleted my entire Instagram—here’s why it paid off
+
+2018. Zero sales, 1,700 “likes,” and a daily dose of imposter syndrome.
+
+So I nuked the account.
+
+The silence forced me to build an email list instead—500 subscribers in 30 days. That tiny list funded version 1 of CC360.
+
+Lesson: vanity reach ≠ revenue. Build owned channels first.
+
+What vanity metric could you scrap this week? Reply and let me know—I’ll share the best answers.
+– Stockton
+
+### 5 | Pitfalls to Dodge
+
+1. **Sneak-selling**—any whiff of a hidden pitch erodes trust.
+2. **Multi-topic rambles**—one idea per email keeps impact high.
+3. **No payoff**—if the hook promises a fix, deliver the fix.
+4. **Dead-end content**—most Engage emails should link to deeper *free* help or invite conversation.
+
+Master the **Engage** brick and subscribers will open with anticipation—paving the way for the softer Guides and the occasional Offers that actually convert.

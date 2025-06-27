@@ -1,0 +1,88 @@
+*Soft invitation · Moves the curious closer · Often hides inside an Engage*
+
+---
+
+### 1 | Purpose & Timing
+
+| What it does | How it appears |
+| --- | --- |
+| • Turns passive readers into active prospects—demo, deeper training, survey, comparison, or FAQ. • Bridges the trust earned by *E-mails* to the eventual *Offer.* • Lets you qualify interest without pressure. | **Two flavors• Hybrid E+G** – the value lesson comes first (80 %+ of the copy) and a single soft CTA sits at the end, often in a P.S.**• Stand-alone G** – the entire email is built to warm the click, but still gives a nugget of insight up-front. |
+
+*Because hybrids are common, your actual send count may include more G’s than the 7 standalone bricks in the 30-email rhythm; that’s fine—the ratios refer to pure bricks.*
+
+---
+
+### 2 | Core Ingredients
+
+| Ingredient | Why it matters | Quick example |
+| --- | --- | --- |
+| **Value spark** | Even a pure Guide delivers *one* insight or stat first. | “Founders who delegate sales 2× sooner grow 30 % faster…” |
+| **Soft CTA** | Clear, no-pressure next step (demo, template vault, workshop application). | “Book a 10-min strategy call here.” |
+| **Credibility cue** | Social proof or authority line to justify the ask. | “Used by 67 portfolio CEOs.” |
+| **Low-friction wording** | Removes buying language; frames as help or exploration. | “See if you’re a fit…” / “Grab the walkthrough…” |
+
+---
+
+### 3 | Five Proven *G* Variations
+
+---
+
+| Variation | Best-fit scenario | Extra tip |
+| --- | --- | --- |
+| **Book-a-Call (demo / discovery / consult)** | Any sales conversation where the real conversion happens on Zoom or phone. | Offer 2–3 time slots or drop a Calendly link; frame as “see if we’re a fit,” not “book a sales call.” |
+| **Workshop / Webinar Application** | High-ticket event or program that needs pre-qualification. | Position the call as a mutual fit check to keep friction low. |
+| **Case-Study Deep Dive** | Teach + tease a fuller success story. | Link to a PDF or video; no squeeze page. |
+| **Tool Vault Unlock** | Offer a folder of SOPs, swipe files, or templates. | Mention exact file count/size for curiosity. |
+| **Survey / Reply Ask** | Market research + invisible qualifier. | Promise to send compiled results to participants. |
+
+### 4 | Plain-Text Mini Templates
+
+### A. Hybrid E + G (value first, ask second)
+
+Subject: The 3P test before every hire
+
+Most leaders over-hire because they solve a short-term problem with a long-term payroll bill.
+
+Run the 3P filter first:
+1. Process – will a system fix this?
+2. Project – is it a 90-day sprint?
+3. Person – only if it’s truly ongoing work.
+
+I dropped a 5-minute Loom showing exactly how we apply 3P.
+
+► Watch the Loom (no opt-in)
+
+PS – If you’d like our full hiring playbook, grab a 10-min slot with my team here and we’ll see if the Vegas Scaling Workshop is a fit.
+
+### B. Stand-Alone Guide (demo invite)
+
+Subject: Want me to walk you through the new automation builder?
+
+Quick heads-up: we just rebuilt the course-launch automation inside CC360.
+
+Tomorrow I’m hosting two 20-minute live demos:
+•  9 AM PT
+•  1 PM PT
+
+Pick a time here and bring your toughest workflow question.
+
+See you on the call,
+Stockton
+
+---
+
+### 5 | Pitfalls to Dodge
+
+1. **Pitch creep** – keep language exploratory, not transactional.
+2. **Multiple CTAs** – one path per email.
+3. **Value-less Guide** – always open with a useful nugget before the ask.
+4. **Hidden paywalls** – soft CTA must lead straight to the promised next step or a no-obligation booking page.
+
+---
+
+### 6 | How *G* Coexists with *E*
+
+| Scenario | How to count it | Why |
+| --- | --- | --- |
+| Engage email with a P.S. demo invite | Still counts as **E** (hybrid) | 80 %+ of copy is value; ask is optional follow-up. |
+| Short email whose sole focus is “book a workshop chat” with a quick tip upfront | Counts as **G** | Primary purpose is the soft invitation. |
