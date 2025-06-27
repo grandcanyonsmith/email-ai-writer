@@ -6,6 +6,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
+const compression = require('compression');
 require('dotenv').config();
 
 const apiRoutes = require('./routes/api');
@@ -40,6 +41,7 @@ app.use(morgan('combined', { stream: errorLogStream, skip: (req, res) => res.sta
 
 app.use(morgan('combined'));
 app.use(mongoSanitize());
+app.use(compression());
 
 // API routes
 app.use('/api', apiRoutes);

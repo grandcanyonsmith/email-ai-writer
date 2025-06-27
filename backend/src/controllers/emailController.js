@@ -27,6 +27,12 @@ const editEmailSchema = Joi.object({
   aiPrompt: Joi.string().min(2).required()
 });
 
+const sequenceCache = {
+  all: { data: null, timestamp: 0 },
+  byId: {},
+  ttl: 30000 // 30 seconds
+};
+
 class EmailController {
   async generateSequence(req, res) {
     try {
@@ -145,37 +151,35 @@ class EmailController {
 
   async getSequences(req, res) {
     try {
+      const now = Date.now();
+      if (sequenceCache.all.data && now - sequenceCache.all.timestamp < sequenceCache.ttl) {
+        return res.json({ success: true, sequences: sequenceCache.all.data, count: sequenceCache.all.data.length, cached: true });
+      }
       const sequences = await this.loadAllSequences();
-      res.json({ 
-        success: true, 
-        sequences,
-        count: sequences.length
-      });
+      sequenceCache.all = { data: sequences, timestamp: now };
+      res.json({ success: true, sequences, count: sequences.length });
     } catch (error) {
       console.error('Error loading sequences:', error);
-      res.status(500).json({ 
-        error: 'Failed to load sequences',
-        message: error.message 
-      });
+      res.status(500).json({ error: 'Failed to load sequences', message: error.message });
     }
   }
 
   async getSequence(req, res) {
     try {
       const { id } = req.params;
+      const now = Date.now();
+      if (sequenceCache.byId[id] && now - sequenceCache.byId[id].timestamp < sequenceCache.ttl) {
+        return res.json({ success: true, sequence: sequenceCache.byId[id].data, cached: true });
+      }
       const sequence = await this.loadSequence(id);
-      
       if (!sequence) {
         return res.status(404).json({ error: 'Sequence not found' });
       }
-
+      sequenceCache.byId[id] = { data: sequence, timestamp: now };
       res.json({ success: true, sequence });
     } catch (error) {
       console.error('Error loading sequence:', error);
-      res.status(500).json({ 
-        error: 'Failed to load sequence',
-        message: error.message 
-      });
+      res.status(500).json({ error: 'Failed to load sequence', message: error.message });
     }
   }
 
