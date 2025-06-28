@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import DashboardLayout from "./dashboard/layout";
+import Navbar from "./components/Navbar";
 
 interface ClientLayoutProps {
   children: ReactNode;
@@ -20,8 +21,9 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   // For /dashboard, render children directly (no sidebar)
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-br from-gray-50 to-blue-100">
-      {children}
-    </main>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-blue-100">
+      <Navbar />
+      <main className="flex-1 flex flex-col items-center justify-center p-4">{children}</main>
+    </div>
   );
-} 
+}
