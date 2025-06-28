@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
   { href: "/dashboard", label: "Dashboard", icon: "🏠" },
@@ -12,7 +12,14 @@ const navLinks = [
 
 export default function Sidebar({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    router.push('/login');
+  };
 
   return (
     <div className="min-h-screen flex bg-gradient-to-br from-gray-50 to-blue-100">
@@ -27,7 +34,9 @@ export default function Sidebar({ children }: { children: ReactNode }) {
       {/* Sidebar */}
       <aside className={`fixed md:static z-40 top-0 left-0 h-full w-64 bg-white border-r border-gray-100 shadow-lg flex flex-col py-8 px-6 transition-transform duration-200 md:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}> 
         <div className="mb-10 hidden md:block">
-          <span className="text-2xl font-bold text-blue-700">Email AI Writer</span>
+          <Link href="/dashboard" className="text-2xl font-bold text-blue-700 hover:text-blue-800 transition">
+            Email AI Writer
+          </Link>
         </div>
         <nav className="flex-1 space-y-2 mt-10 md:mt-0">
           {navLinks.map(link => (
@@ -41,9 +50,12 @@ export default function Sidebar({ children }: { children: ReactNode }) {
             </Link>
           ))}
         </nav>
-        <form action="/logout" method="post" className="mt-10">
-          <button type="submit" className="w-full py-2 bg-red-50 text-red-600 rounded-lg font-semibold hover:bg-red-100 transition">Logout</button>
-        </form>
+        <button 
+          onClick={handleLogout}
+          className="mt-10 w-full py-2 bg-red-50 text-red-600 rounded-lg font-semibold hover:bg-red-100 transition"
+        >
+          Logout
+        </button>
       </aside>
       {/* Overlay for mobile sidebar */}
       {sidebarOpen && <div className="fixed inset-0 bg-black/20 z-30 md:hidden" onClick={() => setSidebarOpen(false)} />}
