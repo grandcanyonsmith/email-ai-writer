@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Toast from "../components/Toast";
 import Spinner from "../components/Spinner";
+import PageContainer from "../components/PageContainer";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState({ name: "", company: "" });
@@ -32,7 +33,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-xl p-8 border border-gray-100 mt-12">
+    <PageContainer width="max-w-lg" className="mt-12">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Your Profile</h1>
       <p className="text-gray-500 mb-6">Update your account details below.</p>
       <form onSubmit={handleSave} className="space-y-5">
@@ -72,6 +73,6 @@ export default function ProfilePage() {
       {showToast && (
         <Toast message={toastMsg} type="success" onClose={() => setShowToast(false)} />
       )}
-    </div>
+    </PageContainer>
   );
-} 
+}

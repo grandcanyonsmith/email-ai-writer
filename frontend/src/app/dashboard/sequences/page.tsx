@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import SequenceList from '../../components/SequenceList';
+import PageContainer from '../../components/PageContainer';
 
 export default function SequencesPage() {
   const [user, setUser] = useState<any>(null);
@@ -40,7 +41,7 @@ export default function SequencesPage() {
   if (!user) return null;
 
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+    <PageContainer width="max-w-6xl">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">My Email Sequences</h1>
@@ -69,6 +70,6 @@ export default function SequencesPage() {
           </Link>
         </div>
       )}
-    </div>
+    </PageContainer>
   );
-} 
+}

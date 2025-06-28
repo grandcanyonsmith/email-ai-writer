@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Toast from "../../components/Toast";
 import Spinner from "../../components/Spinner";
+import PageContainer from "../../components/PageContainer";
 
 export default function TemplatesPage() {
   const [templates, setTemplates] = useState<{ name: string; content: string }[]>([]);
@@ -67,7 +68,7 @@ export default function TemplatesPage() {
   if (loading) return <div className="flex justify-center py-20"><Spinner /></div>;
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-6 border border-gray-100 mt-8 w-full">
+    <PageContainer width="max-w-2xl" className="mt-8 w-full">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Edit Email Templates</h1>
       <p className="text-gray-500 mb-6">These are the core templates and instructions the AI uses to write your sequences.</p>
       <form onSubmit={handleSave} className="space-y-5">
@@ -105,6 +106,6 @@ export default function TemplatesPage() {
       {showToast && (
         <Toast message={toastMsg} type="success" onClose={() => setShowToast(false)} />
       )}
-    </div>
+    </PageContainer>
   );
-} 
+}
