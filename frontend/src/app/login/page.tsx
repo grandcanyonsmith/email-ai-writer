@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Toast from "../components/Toast";
 import Spinner from "../components/Spinner";
+import PageContainer from "../components/PageContainer";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-blue-100">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+      <PageContainer width="max-w-md">
         <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">Sign in to Email AI Writer</h1>
         <p className="text-gray-500 mb-6 text-center">Welcome back! Please enter your details.</p>
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -77,7 +78,7 @@ export default function LoginPage() {
         <div className="mt-6 text-center text-gray-500 text-sm">
           Don&apos;t have an account? <a href="/signup" className="text-blue-600 hover:underline font-medium">Sign up</a>
         </div>
-      </div>
+      </PageContainer>
       {showToast && error && (
         <Toast message={error} type="error" onClose={() => setShowToast(false)} />
       )}

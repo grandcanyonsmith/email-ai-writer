@@ -7,6 +7,7 @@ import EmailViewer from './components/EmailViewer';
 import AuthModal from './components/AuthModal';
 import UserMenu from './components/UserMenu';
 import SequenceList from './components/SequenceList';
+import PageContainer from './components/PageContainer';
 import { useRouter } from "next/navigation";
 
 interface EmailSequence {
@@ -226,7 +227,7 @@ export default function HomePage() {
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-blue-100">
-      <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl p-8 border border-gray-100 mt-12 mb-12">
+      <PageContainer width="max-w-3xl" className="mt-12 mb-12">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Email AI Writer</h1>
           <UserMenu user={user} onLogout={handleLogout} />
@@ -579,7 +580,7 @@ export default function HomePage() {
             )}
           </motion.div>
         </div>
-      </div>
+      </PageContainer>
 
       {/* Email Viewer Modal */}
       {showEmailViewer && selectedEmail && (

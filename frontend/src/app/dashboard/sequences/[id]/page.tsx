@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import EmailViewer from '../../../components/EmailViewer';
+import PageContainer from '../../../components/PageContainer';
 
 interface Email {
   type: string;
@@ -100,7 +101,7 @@ export default function SequenceDetailPage() {
 
   if (error) {
     return (
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+      <PageContainer width="max-w-4xl">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
           <p className="text-gray-600 mb-6">{error}</p>
@@ -111,14 +112,14 @@ export default function SequenceDetailPage() {
             Back to Sequences
           </button>
         </div>
-      </div>
+      </PageContainer>
     );
   }
 
   if (!sequence) return null;
 
   return (
-    <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+    <PageContainer width="max-w-6xl">
       {/* Header */}
       <div className="flex justify-between items-start mb-8">
         <div>
@@ -227,6 +228,6 @@ export default function SequenceDetailPage() {
           }}
         />
       )}
-    </div>
+    </PageContainer>
   );
-} 
+}
