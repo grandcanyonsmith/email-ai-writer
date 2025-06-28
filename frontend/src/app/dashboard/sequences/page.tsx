@@ -55,7 +55,7 @@ export default function SequencesPage() {
       </div>
 
       <div className="bg-white rounded-lg">
-        <SequenceList token={token} onSelectSequence={handleSelectSequence} />
+        <SequenceList token={token || ''} onSelectSequence={handleSelectSequence} />
       </div>
 
       {!token && (

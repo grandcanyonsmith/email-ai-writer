@@ -6,7 +6,6 @@ import Link from 'next/link';
 import EmailViewer from '../../../components/EmailViewer';
 
 interface Email {
-  id: string;
   type: string;
   subject: string;
   content: string;
@@ -170,7 +169,7 @@ export default function SequenceDetailPage() {
         <div className="space-y-4">
           {sequence.emails.map((email, index) => (
             <div
-              key={email.id || index}
+              key={email.order || index}
               className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow cursor-pointer"
               onClick={() => handleEmailClick(email)}
             >
@@ -201,8 +200,31 @@ export default function SequenceDetailPage() {
       {showEmailViewer && selectedEmail && (
         <EmailViewer
           email={selectedEmail}
+          businessData={{
+            businessName: sequence.businessName,
+            businessDescription: sequence.businessDescription,
+            targetAudience: sequence.targetAudience,
+            leadMagnet: sequence.leadMagnet,
+            primaryCTA: sequence.primaryCTA,
+            secondaryCTA: sequence.secondaryCTA,
+            heroJourney: sequence.heroJourney,
+            resources: sequence.resources,
+            engageCount: sequence.engageCount,
+            guideCount: sequence.guideCount,
+            offerCount: sequence.offerCount
+          }}
           onClose={() => setShowEmailViewer(false)}
-          token={token}
+          onSave={(updatedEmail) => {
+            // Update the email in the sequence
+            const updatedEmails = sequence.emails.map(email => 
+              email.order === updatedEmail.order ? updatedEmail : email
+            );
+            setSequence({
+              ...sequence,
+              emails: updatedEmails
+            });
+            setShowEmailViewer(false);
+          }}
         />
       )}
     </div>
